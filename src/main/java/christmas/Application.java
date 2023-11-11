@@ -14,5 +14,6 @@ public class Application {
         outputView.guidance(WELCOME.getGuidance());
         InputView inputView = new ChristmasInputView();
         inputView.getVisitDate();
+        inputView.getOrders();
     }
 }
