@@ -19,7 +19,7 @@ class DateOfVisitValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "31", "0", "32", "-2147483649", "2147483648"})
-    @DisplayName("입력값이 숫자인 경우 어떠한 에러도 반환되지 않는다.")
+    @DisplayName("입력값이 숫자인 경우 어떠한 예외도 반환되지 않는다.")
     void numericCheckSuccess(String dateOfVisit) {
         // given
         // when & then
@@ -39,7 +39,7 @@ class DateOfVisitValidatorTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 16, 31})
-    @DisplayName("입력값이 1이상 31이하일 경우 어떠한 에러도 반환되지 않는다.")
+    @DisplayName("입력값이 1이상 31이하일 경우 어떠한 예외도 반환되지 않는다.")
     void rangeCheckSuccess(int dateOfVisit) {
         // given
         // when & then

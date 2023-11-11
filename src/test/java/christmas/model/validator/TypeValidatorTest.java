@@ -18,7 +18,7 @@ class TypeValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "31", "0", "32", "-2147483649", "2147483648"})
-    @DisplayName("입력값이 숫자인 경우 어떠한 에러도 반환되지 않는다.")
+    @DisplayName("입력값이 숫자인 경우 어떠한 예외도 반환되지 않는다.")
     void numericCheckSuccess(String input) {
         // given
         // when & then
