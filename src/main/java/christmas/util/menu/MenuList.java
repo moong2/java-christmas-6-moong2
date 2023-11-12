@@ -1,6 +1,6 @@
 package christmas.util.menu;
 
-public enum MenuList implements MenuItem {
+public enum MenuList {
     MUSHROOM_SOUP("양송이수프", 6_000, Category.APPETIZER),
     TAPAS("타파스", 5_500, Category.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8_000, Category.APPETIZER),
@@ -27,17 +27,14 @@ public enum MenuList implements MenuItem {
         this.category = category;
     }
 
-    @Override
     public String getMenuName() {
         return this.menuName;
     }
 
-    @Override
     public int getPrice() {
         return this.price;
     }
 
-    @Override
     public Category getCategory() {
         return this.category;
     }
