@@ -31,7 +31,7 @@ class OrderingValidatorTest {
 
     static Stream<Map<String, Integer>> allOfTheMenusInList() {
         return Stream.of(
-                Map.of("양송이수프", 1, "타파스", 1, "시지샐러드", 1),
+                Map.of("양송이수프", 1, "타파스", 1, "시저샐러드", 1),
                 Map.of("티본스테이크", 1, "바비큐립", 1, "해산물파스타", 1, "크리스마스파스타", 1),
                 Map.of("초코케이크", 1, "아이스크림", 1),
                 Map.of("제로콜라", 1, "레드와인", 1, "샴페인", 1)
@@ -96,7 +96,7 @@ class OrderingValidatorTest {
     void notOnlyDrinks(Map<String, Integer> orders) {
         // given
         // when & then
-        assertThatNoException().isThrownBy(() -> orderingValidator.validateNotOnlyDrinks(orders));
+        assertThatNoException().isThrownBy(() -> orderingValidator.validateNotOnlyBeverage(orders));
     }
 
     static Stream<Map<String, Integer>> someOfTheMenuNotDrinks() {
@@ -115,7 +115,7 @@ class OrderingValidatorTest {
         // given
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> orderingValidator.validateNotOnlyDrinks(orders))
+                .isThrownBy(() -> orderingValidator.validateNotOnlyBeverage(orders))
                 .withMessage(ORDERING_INVALID.getMessage());
     }
 
@@ -137,7 +137,7 @@ class OrderingValidatorTest {
     void totalOrderAmountInRange(Map<String, Integer> orders) {
         // given
         // when & then
-        assertThatNoException().isThrownBy(() -> orderingValidator.validateNumberOfFoodsInRange(orders));
+        assertThatNoException().isThrownBy(() -> orderingValidator.validateTotalNumberOfFoodsInRange(orders));
     }
 
     static Stream<Map<String, Integer>> allOfTheTotalOrderAmountInRange() {
@@ -167,7 +167,7 @@ class OrderingValidatorTest {
         // given
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> orderingValidator.validateNumberOfFoodsInRange(orders))
+                .isThrownBy(() -> orderingValidator.validateTotalNumberOfFoodsInRange(orders))
                 .withMessage(ORDERING_INVALID.getMessage());
     }
 
