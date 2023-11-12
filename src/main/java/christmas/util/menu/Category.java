@@ -1,6 +1,4 @@
-package christmas.util.menuList;
-
-import java.util.Map;
+package christmas.util.menu;
 
 public enum Category {
     APPETIZER("애피타이저"),
@@ -12,9 +10,5 @@ public enum Category {
 
     Category(String category) {
         this.category = category;
-    }
-
-    public Map<String, Integer> getAllMenus() {
-
     }
 }
