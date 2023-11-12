@@ -37,8 +37,8 @@ class StringToMapTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"해산물파스타-2147483648", "레드와인--2147483649"})
-    @DisplayName("메뉴가 숫자인 경우 어떠한 에러도 반환하지 않는다.")
+    @ValueSource(strings = {"해산물파스타-2147483647", "레드와인-0"})
+    @DisplayName("메뉴가 Integer인 경우 어떠한 에러도 반환하지 않는다.")
     void numberOfFoodSuccess(String order) {
         // given
         // when & then
@@ -47,7 +47,7 @@ class StringToMapTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타-number"})
-    @DisplayName("메뉴가 숫자가 아닌 경우 에러를 반환한다.")
+    @DisplayName("메뉴가 Integer가 아닌 경우 에러를 반환한다.")
     void numberOfFoodFailure(String order) {
         // given
         // when & then
