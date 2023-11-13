@@ -1,5 +1,9 @@
 package christmas.util.menu;
 
+import static christmas.util.menu.MenuList.CAESAR_SALAD;
+import static christmas.util.menu.MenuList.CHOCOLATE_CAKE;
+import static christmas.util.menu.MenuList.CHRISTMAS_PASTA;
+import static christmas.util.menu.MenuList.RED_WINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
@@ -8,6 +12,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class MenuUtilsTest {
@@ -50,5 +55,26 @@ class MenuUtilsTest {
 
     private static Stream<Category> getAllCategories() {
         return Stream.of(Category.values());
+    }
+
+    @ParameterizedTest
+    @MethodSource("getSpecificFood")
+    @DisplayName("특정 이름의 메뉴를 가져온다.")
+    void getMenuByName(String menuName, MenuList expectedMenu) {
+        // given
+        // when
+        MenuList testMenu = MenuUtils.getMenuByName(menuName);
+
+        // then
+        assertThat(testMenu).isEqualTo(expectedMenu);
+    }
+
+    private static Stream<Arguments> getSpecificFood() {
+        return Stream.of(
+                Arguments.of("시저샐러드", CAESAR_SALAD),
+                Arguments.of("크리스마스파스타", CHRISTMAS_PASTA),
+                Arguments.of("초코케이크", CHOCOLATE_CAKE),
+                Arguments.of("레드와인", RED_WINE)
+        );
     }
 }
