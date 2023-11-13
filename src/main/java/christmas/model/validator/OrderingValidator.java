@@ -5,12 +5,12 @@ import static christmas.util.menu.MenuCategory.BEVERAGE;
 import static christmas.util.menu.MenuDetails.checkMaximumOfTotalNumberOfFood;
 import static christmas.util.menu.MenuDetails.checkMinimumOfTotalNumberOfFood;
 
-import christmas.util.menu.MenuUtils;
+import christmas.util.menu.MenuList;
 import java.util.Map;
 
 public class OrderingValidator {
     public void validateInMenuList(Map<String, Integer> orders) {
-        Map<String, Integer> menuList = MenuUtils.getAllMenus();
+        Map<String, Integer> menuList = MenuList.getAllMenus();
 
         for (String menuName : orders.keySet()) {
             if (!menuList.containsKey(menuName)) {
@@ -27,7 +27,7 @@ public class OrderingValidator {
     }
 
     public void validateNotOnlyBeverage(Map<String, Integer> orders) {
-        Map<String, Integer> beverageMenus = MenuUtils.getCategoryMenus(BEVERAGE);
+        Map<String, Integer> beverageMenus = MenuList.getCategoryMenus(BEVERAGE);
 
         boolean isOnlyBeverage = orders.keySet().stream()
                 .allMatch(beverageMenus::containsKey);

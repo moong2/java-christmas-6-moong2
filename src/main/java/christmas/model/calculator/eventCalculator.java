@@ -11,7 +11,6 @@ import static christmas.util.menu.MenuList.NONE_MENU;
 import christmas.util.calendar.EventDetails;
 import christmas.util.menu.MenuCategory;
 import christmas.util.menu.MenuList;
-import christmas.util.menu.MenuUtils;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class eventCalculator {
         if (isWeekday(date)) {
             return orders.entrySet()
                     .stream()
-                    .filter(order -> MenuUtils.getMenuByName(order.getKey()).getCategory() == MenuCategory.DESSERT)
+                    .filter(order -> MenuList.getMenuByName(order.getKey()).getCategory() == MenuCategory.DESSERT)
                     .mapToInt(Map.Entry::getValue)
                     .map(EventDetails::weekendOrWeekdayEventDiscount)
                     .sum();
@@ -56,7 +55,7 @@ public class eventCalculator {
         if (isWeekend(date)) {
             return orders.entrySet()
                     .stream()
-                    .filter(order -> MenuUtils.getMenuByName(order.getKey()).getCategory() == MenuCategory.MAIN)
+                    .filter(order -> MenuList.getMenuByName(order.getKey()).getCategory() == MenuCategory.MAIN)
                     .mapToInt(Map.Entry::getValue)
                     .map(EventDetails::weekendOrWeekdayEventDiscount)
                     .sum();
