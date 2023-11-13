@@ -1,6 +1,6 @@
 package christmas.model.calculator;
 
-import static christmas.util.calendar.EventDetails.NON_DISCOUNT_DISCOUNT;
+import static christmas.util.calendar.EventDetails.NONE_DISCOUNT;
 import static christmas.util.calendar.EventDetails.SPECIAL_EVENT_DISCOUNT;
 import static christmas.util.calendar.EventDetails.WEEKEND_WEEKDAY_EVENT_DISCOUNT;
 import static christmas.util.menu.MenuList.CHAMPAGNE;
@@ -101,7 +101,7 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.weekdayEvent(orders, date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NON_DISCOUNT_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
     }
 
     @ParameterizedTest
@@ -125,7 +125,7 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.weekendEvent(orders, date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NON_DISCOUNT_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
     }
 
     static Stream<Arguments> ordersAndWeekday() {
@@ -176,10 +176,10 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.specialEvent(date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NON_DISCOUNT_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
     }
 
-    static Stream<Arguments> nonSpecialDate() {
+    static Stream<Arguments> notSpecialDate() {
         return Stream.of(
                 Arguments.of(LocalDate.of(2023, 12, 1)),
                 Arguments.of(LocalDate.of(2023, 12, 4)),

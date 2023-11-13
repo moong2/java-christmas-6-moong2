@@ -37,25 +37,25 @@ class MenuUtilsTest {
     @ParameterizedTest
     @MethodSource("getAllCategories")
     @DisplayName("특정 카테고리의 메뉴를 가져온다.")
-    void getCategoryMenu(Category category) {
+    void getCategoryMenu(MenuCategory menuCategory) {
         // given
         HashMap<String, Integer> categoryMenus = new HashMap<>();
 
         for (MenuList menu : MenuList.values()) {
-            if (menu.getCategory().equals(category)) {
+            if (menu.getCategory().equals(menuCategory)) {
                 categoryMenus.put(menu.getMenuName(), menu.getPrice());
             }
         }
 
         // when
-        Map<String, Integer> testMenus = MenuUtils.getCategoryMenus(category);
+        Map<String, Integer> testMenus = MenuUtils.getCategoryMenus(menuCategory);
 
         // then
         assertThat(testMenus).isEqualTo(categoryMenus);
     }
 
-    private static Stream<Category> getAllCategories() {
-        return Stream.of(Category.values());
+    private static Stream<MenuCategory> getAllCategories() {
+        return Stream.of(MenuCategory.values());
     }
 
     @ParameterizedTest
