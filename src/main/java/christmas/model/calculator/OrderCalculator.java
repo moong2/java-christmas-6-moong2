@@ -5,7 +5,6 @@ import static christmas.util.menu.MenuList.NONE_MENU;
 
 import christmas.util.calendar.EventCategory;
 import christmas.util.menu.MenuList;
-import christmas.util.menu.MenuUtils;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -15,7 +14,7 @@ public class OrderCalculator {
 
         for (Entry<String, Integer> order : orders.entrySet()) {
             String menuName = order.getKey();
-            MenuList menu = MenuUtils.getMenuByName(menuName);
+            MenuList menu = MenuList.getMenuByName(menuName);
 
             menuCheck(menu);
 
@@ -37,5 +36,9 @@ public class OrderCalculator {
                 .stream()
                 .mapToInt((discount) -> discount.getValue())
                 .sum();
+    }
+
+    public static int totalOrderAmountAfterDiscount(int totalOrderAmountBeforeDiscount, int discount) {
+        return totalOrderAmountBeforeDiscount - discount;
     }
 }
