@@ -56,7 +56,7 @@ class OrderCalculatorTest {
         MenuList given = CHAMPAGNE;
 
         // when & then
-        assertThat(orderCalculator.givenMenu(totalOrderAmountBeforeDiscount)).equals(given);
+        assertThat(orderCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(given);
     }
 
     @ParameterizedTest
@@ -67,6 +67,6 @@ class OrderCalculatorTest {
         MenuList notGiven = NONE_MENU;
 
         // when & then
-        assertThat(orderCalculator.givenMenu(totalOrderAmountBeforeDiscount)).equals(notGiven);
+        assertThat(orderCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(notGiven);
     }
 }
