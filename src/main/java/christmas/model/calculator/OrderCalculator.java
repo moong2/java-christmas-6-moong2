@@ -3,6 +3,7 @@ package christmas.model.calculator;
 import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
 import static christmas.util.menu.MenuList.NONE_MENU;
 
+import christmas.util.calendar.EventCategory;
 import christmas.util.menu.MenuList;
 import christmas.util.menu.MenuUtils;
 import java.util.Map;
@@ -29,5 +30,12 @@ public class OrderCalculator {
         if (menu == NONE_MENU) {
             throw new IllegalArgumentException(ORDERING_INVALID.getMessage());
         }
+    }
+
+    public static int totalDiscount(Map<EventCategory, Integer> discounts) {
+        return discounts.entrySet()
+                .stream()
+                .mapToInt((discount) -> discount.getValue())
+                .sum();
     }
 }

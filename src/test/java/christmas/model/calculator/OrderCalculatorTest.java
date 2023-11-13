@@ -55,7 +55,7 @@ class OrderCalculatorTest {
     void totalDiscountTest(Map<EventCategory, Integer> discounts, int totalDiscount) {
         // given
         // when
-        int testTotalDiscount = orderCalculator.getTotalDiscount(discounts);
+        int testTotalDiscount = orderCalculator.totalDiscount(discounts);
 
         // then
         assertThat(testTotalDiscount).isEqualTo(totalDiscount);
