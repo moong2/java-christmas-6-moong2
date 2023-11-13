@@ -3,6 +3,7 @@ package christmas.util.menu;
 import static christmas.util.menu.MenuList.CAESAR_SALAD;
 import static christmas.util.menu.MenuList.CHOCOLATE_CAKE;
 import static christmas.util.menu.MenuList.CHRISTMAS_PASTA;
+import static christmas.util.menu.MenuList.NONE_MENU;
 import static christmas.util.menu.MenuList.RED_WINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -74,7 +75,8 @@ class MenuUtilsTest {
                 Arguments.of("시저샐러드", CAESAR_SALAD),
                 Arguments.of("크리스마스파스타", CHRISTMAS_PASTA),
                 Arguments.of("초코케이크", CHOCOLATE_CAKE),
-                Arguments.of("레드와인", RED_WINE)
+                Arguments.of("레드와인", RED_WINE),
+                Arguments.of("피자", NONE_MENU)
         );
     }
 }
