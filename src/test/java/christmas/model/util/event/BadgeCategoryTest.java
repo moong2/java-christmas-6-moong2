@@ -1,10 +1,10 @@
-package christmas.util.calendar;
+package christmas.model.util.event;
 
 
-import static christmas.util.calendar.BadgeCategory.NONE_BADGE;
-import static christmas.util.calendar.BadgeCategory.SANTA_BADGE;
-import static christmas.util.calendar.BadgeCategory.STAR_BADGE;
-import static christmas.util.calendar.BadgeCategory.TREE_BADGE;
+import static christmas.model.util.event.BadgeCategory.NONE_BADGE;
+import static christmas.model.util.event.BadgeCategory.SANTA_BADGE;
+import static christmas.model.util.event.BadgeCategory.STAR_BADGE;
+import static christmas.model.util.event.BadgeCategory.TREE_BADGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;

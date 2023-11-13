@@ -1,12 +1,12 @@
 package christmas.model.calculator;
 
-import static christmas.util.calendar.EventCategory.CHRISTMAS_DDAY_EVENT;
-import static christmas.util.calendar.EventCategory.GIVE_EVENT;
-import static christmas.util.calendar.EventCategory.SPECIAL_EVENT;
-import static christmas.util.calendar.EventCategory.WEEKDAY_EVENT;
+import static christmas.model.util.event.EventCategory.CHRISTMAS_DDAY_EVENT;
+import static christmas.model.util.event.EventCategory.GIVE_EVENT;
+import static christmas.model.util.event.EventCategory.SPECIAL_EVENT;
+import static christmas.model.util.event.EventCategory.WEEKDAY_EVENT;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.util.calendar.EventCategory;
+import christmas.model.util.event.EventCategory;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;

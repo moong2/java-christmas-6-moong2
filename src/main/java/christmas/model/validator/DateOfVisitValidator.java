@@ -1,7 +1,7 @@
 package christmas.model.validator;
 
-import static christmas.util.calendar.EventPeriod.EVENT_DAY_END;
-import static christmas.util.calendar.EventPeriod.EVENT_DAY_START;
+import static christmas.model.util.event.EventPeriod.EVENT_DAY_END;
+import static christmas.model.util.event.EventPeriod.EVENT_DAY_START;
 import static christmas.util.exceptions.Exceptions.DATE_OF_VISIT_INVALID;
 
 public class DateOfVisitValidator {

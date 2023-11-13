@@ -1,4 +1,4 @@
-package christmas.util.menu;
+package christmas.model.util.menu;
 
 import java.util.Arrays;
 import java.util.Map;

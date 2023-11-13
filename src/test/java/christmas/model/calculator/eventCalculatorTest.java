@@ -1,13 +1,13 @@
 package christmas.model.calculator;
 
-import static christmas.util.calendar.EventDetails.NONE_DISCOUNT;
-import static christmas.util.calendar.EventDetails.SPECIAL_EVENT_DISCOUNT;
-import static christmas.util.calendar.EventDetails.WEEKEND_WEEKDAY_EVENT_DISCOUNT;
-import static christmas.util.menu.MenuList.CHAMPAGNE;
-import static christmas.util.menu.MenuList.NONE_MENU;
+import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
+import static christmas.model.util.event.EventDetails.SPECIAL_EVENT_DISCOUNT;
+import static christmas.model.util.event.EventDetails.WEEKEND_WEEKDAY_EVENT_DISCOUNT;
+import static christmas.model.util.menu.MenuList.CHAMPAGNE;
+import static christmas.model.util.menu.MenuList.NONE_MENU;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.util.menu.MenuList;
+import christmas.model.util.menu.MenuList;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.stream.Stream;

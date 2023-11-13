@@ -1,4 +1,4 @@
-package christmas.util.calendar;
+package christmas.model.util.event;
 
 public enum EventCategory {
     CHRISTMAS_DDAY_EVENT("크리스마스 디데이 할인"),

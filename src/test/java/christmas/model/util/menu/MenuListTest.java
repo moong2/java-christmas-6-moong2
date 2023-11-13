@@ -1,12 +1,14 @@
-package christmas.util.menu;
+package christmas.model.util.menu;
 
-import static christmas.util.menu.MenuList.CAESAR_SALAD;
-import static christmas.util.menu.MenuList.CHOCOLATE_CAKE;
-import static christmas.util.menu.MenuList.CHRISTMAS_PASTA;
-import static christmas.util.menu.MenuList.NONE_MENU;
-import static christmas.util.menu.MenuList.RED_WINE;
+import static christmas.model.util.menu.MenuList.CAESAR_SALAD;
+import static christmas.model.util.menu.MenuList.CHOCOLATE_CAKE;
+import static christmas.model.util.menu.MenuList.CHRISTMAS_PASTA;
+import static christmas.model.util.menu.MenuList.NONE_MENU;
+import static christmas.model.util.menu.MenuList.RED_WINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.model.util.menu.MenuCategory;
+import christmas.model.util.menu.MenuList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;

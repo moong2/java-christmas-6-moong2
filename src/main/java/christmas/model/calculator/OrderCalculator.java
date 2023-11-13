@@ -1,10 +1,10 @@
 package christmas.model.calculator;
 
 import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
-import static christmas.util.menu.MenuList.NONE_MENU;
+import static christmas.model.util.menu.MenuList.NONE_MENU;
 
-import christmas.util.calendar.EventCategory;
-import christmas.util.menu.MenuList;
+import christmas.model.util.event.EventCategory;
+import christmas.model.util.menu.MenuList;
 import java.util.Map;
 import java.util.Map.Entry;
 

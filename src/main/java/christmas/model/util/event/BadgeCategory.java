@@ -1,4 +1,4 @@
-package christmas.util.event;
+package christmas.model.util.event;
 
 import java.util.Arrays;
 

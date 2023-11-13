@@ -1,4 +1,4 @@
-package christmas.util.calendar;
+package christmas.model.util.event;
 
 public enum EventDetails {
     GIFT_EVENT_STANDARD(120_000),

@@ -1,4 +1,4 @@
-package christmas.util.menu;
+package christmas.model.util.menu;
 
 public enum MenuCategory {
     APPETIZER("애피타이저"),

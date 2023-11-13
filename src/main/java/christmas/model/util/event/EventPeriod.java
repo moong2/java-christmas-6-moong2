@@ -1,4 +1,4 @@
-package christmas.util.calendar;
+package christmas.model.util.event;
 
 public enum EventPeriod {
     EVENT_DAY_START(1),

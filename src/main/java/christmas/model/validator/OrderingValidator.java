@@ -1,11 +1,11 @@
 package christmas.model.validator;
 
 import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
-import static christmas.util.menu.MenuCategory.BEVERAGE;
-import static christmas.util.menu.MenuDetails.checkMaximumOfTotalNumberOfFood;
-import static christmas.util.menu.MenuDetails.checkMinimumOfTotalNumberOfFood;
+import static christmas.model.util.menu.MenuCategory.BEVERAGE;
+import static christmas.model.util.menu.MenuDetails.checkMaximumOfTotalNumberOfFood;
+import static christmas.model.util.menu.MenuDetails.checkMinimumOfTotalNumberOfFood;
 
-import christmas.util.menu.MenuList;
+import christmas.model.util.menu.MenuList;
 import java.util.Map;
 
 public class OrderingValidator {

@@ -1,16 +1,16 @@
 package christmas.model.calculator;
 
-import static christmas.util.calendar.EventDetails.GIFT_EVENT_STANDARD;
-import static christmas.util.calendar.EventDetails.NONE_DISCOUNT;
-import static christmas.util.calendar.EventDetails.christmasEventDiscount;
-import static christmas.util.calendar.EventPeriod.isBeforeChristmas;
-import static christmas.util.calendar.SpecialEvent.specialEventDiscount;
-import static christmas.util.menu.MenuList.CHAMPAGNE;
-import static christmas.util.menu.MenuList.NONE_MENU;
+import static christmas.model.util.event.EventDetails.GIFT_EVENT_STANDARD;
+import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
+import static christmas.model.util.event.EventDetails.christmasEventDiscount;
+import static christmas.model.util.event.EventPeriod.isBeforeChristmas;
+import static christmas.model.util.event.SpecialEvent.specialEventDiscount;
+import static christmas.model.util.menu.MenuList.CHAMPAGNE;
+import static christmas.model.util.menu.MenuList.NONE_MENU;
 
-import christmas.util.calendar.EventDetails;
-import christmas.util.menu.MenuCategory;
-import christmas.util.menu.MenuList;
+import christmas.model.util.event.EventDetails;
+import christmas.model.util.menu.MenuCategory;
+import christmas.model.util.menu.MenuList;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;

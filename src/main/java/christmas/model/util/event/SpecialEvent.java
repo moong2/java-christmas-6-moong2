@@ -1,7 +1,7 @@
-package christmas.util.calendar;
+package christmas.model.util.event;
 
-import static christmas.util.calendar.EventDetails.NONE_DISCOUNT;
-import static christmas.util.calendar.EventDetails.SPECIAL_EVENT_DISCOUNT;
+import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
+import static christmas.model.util.event.EventDetails.SPECIAL_EVENT_DISCOUNT;
 
 public enum SpecialEvent {
     STAR_DAY_3RD(3),

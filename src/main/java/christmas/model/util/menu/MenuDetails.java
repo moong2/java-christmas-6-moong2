@@ -1,4 +1,4 @@
-package christmas.util.menu;
+package christmas.model.util.menu;
 
 import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
 
