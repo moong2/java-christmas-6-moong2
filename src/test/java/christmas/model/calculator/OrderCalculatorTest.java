@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class OrderCalculatorTest {
@@ -50,9 +51,42 @@ class OrderCalculatorTest {
     }
 
     @ParameterizedTest
-    @MethodSource("totalDiscount")
+    @MethodSource("totalOrderAmountAfterDiscount")
+    @DisplayName("할인 내역을 통해 할인 금액을 반환한다.")
+    void calculateTotalOrderAmountAfterDiscount(Map<EventCategory, Integer> discounts, int totalOrderAmount) {
+        // given
+        // when
+        int testTotalOrderAmount = orderCalculator.totalDiscount(discounts);
+
+        // then
+        assertThat(testTotalOrderAmount).isEqualTo(totalOrderAmount);
+    }
+
+    static Stream<Arguments> totalOrderAmountAfterDiscount() {
+        return Stream.of(
+                Arguments.of(Map.of(CHRISTMAS_DDAY_EVENT.getCategory(), 1200, WEEKDAY_EVENT.getCategory(), 4046,
+                        SPECIAL_EVENT.getCategory(), 1000), 6246)
+        );
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "142000, 6246, 135754"
+    })
+    @DisplayName("총 할인 금액을 통해 할인 후 예상 결제 금액을 반환한다.")
+    void calculateTotalOrderAmountAfterDiscount(int totalOrderAmountBeforeDiscount, int discount, int expectedTotalOrderAmountAfterDiscount) {
+        // given
+        // when
+        int testTotalOrderAmountAfterDiscount = orderCalculator.totalOrderAmountAfterDiscount(totalOrderAmountBeforeDiscount, discount);
+
+        // then
+        assertThat(testTotalOrderAmountAfterDiscount).isEqualTo(expectedTotalOrderAmountAfterDiscount);
+    }
+
+    @ParameterizedTest
+    @MethodSource("totalBenefits")
     @DisplayName("혜택 내역(증정 메뉴 + 할인 내역)에 따라 총혜택 금액이 반환된다.")
-    void totalDiscountTest(Map<EventCategory, Integer> discounts, int totalDiscount) {
+    void totalBenefitsTest(Map<EventCategory, Integer> discounts, int totalDiscount) {
         // given
         // when
         int testTotalDiscount = orderCalculator.totalDiscount(discounts);
@@ -61,7 +95,7 @@ class OrderCalculatorTest {
         assertThat(testTotalDiscount).isEqualTo(totalDiscount);
     }
 
-    static Stream<Arguments> totalDiscount() {
+    static Stream<Arguments> totalBenefits() {
         return Stream.of(
                 Arguments.of(Map.of(CHRISTMAS_DDAY_EVENT.getCategory(), 1200, WEEKDAY_EVENT.getCategory(), 4046,
                         SPECIAL_EVENT.getCategory(), 1000, GIVE_EVENT.getCategory(), 25000), 31246)

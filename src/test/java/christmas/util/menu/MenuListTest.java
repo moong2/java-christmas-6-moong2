@@ -16,7 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class MenuUtilsTest {
+class MenuListTest {
     @Test
     @DisplayName("모든 메뉴를 가져온다.")
     void getAllMenus() {
@@ -28,7 +28,7 @@ class MenuUtilsTest {
         }
 
         // when
-        Map<String, Integer> testMenus = MenuUtils.getAllMenus();
+        Map<String, Integer> testMenus = MenuList.getAllMenus();
 
         // then
         assertThat(testMenus).isEqualTo(allMenus);
@@ -48,7 +48,7 @@ class MenuUtilsTest {
         }
 
         // when
-        Map<String, Integer> testMenus = MenuUtils.getCategoryMenus(menuCategory);
+        Map<String, Integer> testMenus = MenuList.getCategoryMenus(menuCategory);
 
         // then
         assertThat(testMenus).isEqualTo(categoryMenus);
@@ -64,7 +64,7 @@ class MenuUtilsTest {
     void getMenuByName(String menuName, MenuList expectedMenu) {
         // given
         // when
-        MenuList testMenu = MenuUtils.getMenuByName(menuName);
+        MenuList testMenu = MenuList.getMenuByName(menuName);
 
         // then
         assertThat(testMenu).isEqualTo(expectedMenu);
