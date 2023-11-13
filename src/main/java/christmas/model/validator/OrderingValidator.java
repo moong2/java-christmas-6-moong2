@@ -1,9 +1,9 @@
 package christmas.model.validator;
 
 import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
-import static christmas.util.menu.Category.BEVERAGE;
-import static christmas.util.menu.MenuDetails.MAXIMUM_NUMBER_OF_FOOD;
-import static christmas.util.menu.MenuDetails.MINIMUM_NUMBER_OF_FOOD;
+import static christmas.util.menu.MenuCategory.BEVERAGE;
+import static christmas.util.menu.MenuDetails.checkMaximumOfTotalNumberOfFood;
+import static christmas.util.menu.MenuDetails.checkMinimumOfTotalNumberOfFood;
 
 import christmas.util.menu.MenuUtils;
 import java.util.Map;
@@ -21,8 +21,8 @@ public class OrderingValidator {
 
     public void validateNumberOfFoodsInRange(Map<String, Integer> orders) {
         for (Integer numberOfFood : orders.values()) {
-            checkMinimum(numberOfFood);
-            checkMaximum(numberOfFood);
+            checkMinimumOfTotalNumberOfFood(numberOfFood);
+            checkMaximumOfTotalNumberOfFood(numberOfFood);
         }
     }
 
@@ -43,19 +43,7 @@ public class OrderingValidator {
                 .mapToInt(Integer::intValue)
                 .sum();
 
-        checkMinimum(totalNumberOfFoods);
-        checkMaximum(totalNumberOfFoods);
-    }
-
-    private void checkMinimum(Integer numberOfFood) {
-        if (numberOfFood < MINIMUM_NUMBER_OF_FOOD.getDetail()) {
-            throw new IllegalArgumentException(ORDERING_INVALID.getMessage());
-        }
-    }
-
-    private void checkMaximum(Integer numberOfFood) {
-        if (numberOfFood > MAXIMUM_NUMBER_OF_FOOD.getDetail()) {
-            throw new IllegalArgumentException(ORDERING_INVALID.getMessage());
-        }
+        checkMinimumOfTotalNumberOfFood(totalNumberOfFoods);
+        checkMaximumOfTotalNumberOfFood(totalNumberOfFoods);
     }
 }

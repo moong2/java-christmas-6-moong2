@@ -12,9 +12,9 @@ public class MenuUtils {
                 .collect(Collectors.toUnmodifiableMap(MenuList::getMenuName, MenuList::getPrice));
     }
 
-    public static Map<String, Integer> getCategoryMenus(Category category) {
+    public static Map<String, Integer> getCategoryMenus(MenuCategory menuCategory) {
         return Arrays.stream(MenuList.values())
-                .filter(menus -> menus.getCategory().equals(category))
+                .filter(menus -> menus.getCategory().equals(menuCategory))
                 .collect(Collectors.toUnmodifiableMap(MenuList::getMenuName, MenuList::getPrice));
     }
 

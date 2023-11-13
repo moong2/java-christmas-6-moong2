@@ -1,7 +1,7 @@
 package christmas.model.validator;
 
-import static christmas.util.calendar.EventPeriod.EVENT_END;
-import static christmas.util.calendar.EventPeriod.EVENT_START;
+import static christmas.util.calendar.EventPeriod.EVENT_DAY_END;
+import static christmas.util.calendar.EventPeriod.EVENT_DAY_START;
 import static christmas.util.exceptions.Exceptions.DATE_OF_VISIT_INVALID;
 
 public class DateOfVisitValidator {
@@ -20,13 +20,13 @@ public class DateOfVisitValidator {
     }
 
     private static void checkStart(int dateOfVisit) {
-        if (dateOfVisit < EVENT_START.getDate()) {
+        if (dateOfVisit < EVENT_DAY_START.getDate()) {
             throw new IllegalArgumentException(DATE_OF_VISIT_INVALID.getMessage());
         }
     }
 
     private static void checkEnd(int dateOfVisit) {
-        if (dateOfVisit > EVENT_END.getDate()) {
+        if (dateOfVisit > EVENT_DAY_END.getDate()) {
             throw new IllegalArgumentException(DATE_OF_VISIT_INVALID.getMessage());
         }
     }
