@@ -28,10 +28,29 @@ public class VisitInformationController {
     }
 
     public VisitInformation getVisitInformation() {
-        int visitDate = visitInformationService.validateAndConvertVisitDate(inputView.getVisitDate());
-        Map<String, Integer> orders = visitInformationService.validateAndConvertOrders(inputView.getOrders());
-
+        int visitDate = getValidVisitDate();
+        Map<String, Integer> orders = getValidOrders();
         return visitInformationService.createVisitInformation(visitDate, orders);
+    }
+
+    private int getValidVisitDate() {
+        while (true) {
+            try {
+                return visitInformationService.validateAndConvertVisitDate(inputView.getVisitDate());
+            } catch (IllegalArgumentException e) {
+                outputView.printException(e.getMessage());
+            }
+        }
+    }
+
+    private Map<String, Integer> getValidOrders() {
+        while (true) {
+            try {
+                return visitInformationService.validateAndConvertOrders(inputView.getOrders());
+            } catch (IllegalArgumentException e) {
+                outputView.printException(e.getMessage());
+            }
+        }
     }
 
     public void saveVisitInformation(VisitInformation visitInformation) {

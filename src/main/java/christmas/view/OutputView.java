@@ -27,4 +27,6 @@ public interface OutputView {
     void printBadge(BadgeCategory badge);
 
     void printEventNotApply(String guidance);
+
+    void printException(String message);
 }

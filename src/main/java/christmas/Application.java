@@ -9,11 +9,7 @@ public class Application {
     public static void main(String[] args) {
         ChristmasEventController controller = new ChristmasEventController(setView());
         controller.welcome();
-        try {
-            controller.christmasEvent();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        controller.christmasEvent();
         controller.eventClose();
     }
 

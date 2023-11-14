@@ -105,6 +105,11 @@ public class ChristmasOutputView implements OutputView {
         System.out.println();
     }
 
+    @Override
+    public void printException(String message) {
+        System.out.println(message);
+    }
+
     private String formatCurrency(int amount) {
         NumberFormat currencyFormat = NumberFormat.getNumberInstance();
         currencyFormat.setGroupingUsed(true); // This is usually the default, but set explicitly for clarity
