@@ -1,6 +1,9 @@
 package christmas.model.util.event;
 
 public enum EventPeriod {
+    EVENT_YEAR(2023),
+    EVENT_MONTH(12),
+
     EVENT_DAY_START(1),
     EVENT_DAY_CHRISTMAS(25),
     EVENT_DAY_END(31);

@@ -1,7 +1,30 @@
 package christmas.view;
 
-public interface OutputView {
-    void precaution();
+import christmas.model.util.event.BadgeCategory;
+import christmas.model.util.event.EventCategory;
+import christmas.model.util.menu.MenuList;
+import java.util.Map;
 
-    void guidance(String message);
+public interface OutputView {
+    void printPrecaution();
+
+    void printGuidance(String message);
+
+    void printPreview(int visitDate);
+
+    void printOrderMenus(Map<String, Integer> orders);
+
+    void printTotalAmountBeforeDiscount(int totalAmountBeforeDiscount);
+
+    void printGivenMenu(MenuList menuList);
+
+    void printBenefits(Map<EventCategory, Integer> benefits);
+
+    void printTotalBenefitsAmount(int totalBenefitsAmount);
+
+    void printTotalAmountAfterDiscount(int totalAmountAfterDiscount);
+
+    void printBadge(BadgeCategory badge);
+
+    void printEventNotApply(String guidance);
 }

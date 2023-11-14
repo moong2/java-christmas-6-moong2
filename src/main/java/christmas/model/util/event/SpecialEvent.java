@@ -20,9 +20,9 @@ public enum SpecialEvent {
     public static int specialEventDiscount(int day) {
         for (SpecialEvent specialDay : SpecialEvent.values()) {
             if (specialDay.day == day) {
-                return SPECIAL_EVENT_DISCOUNT.getMoney();
+                return SPECIAL_EVENT_DISCOUNT.getDetails();
             }
         }
-        return NONE_DISCOUNT.getMoney();
+        return NONE_DISCOUNT.getDetails();
     }
 }

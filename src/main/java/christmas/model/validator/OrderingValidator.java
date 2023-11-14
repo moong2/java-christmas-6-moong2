@@ -9,7 +9,7 @@ import christmas.model.util.menu.MenuList;
 import java.util.Map;
 
 public class OrderingValidator {
-    public void validateInMenuList(Map<String, Integer> orders) {
+    public static void validateInMenuList(Map<String, Integer> orders) {
         Map<String, Integer> menuList = MenuList.getAllMenus();
 
         for (String menuName : orders.keySet()) {
@@ -19,14 +19,14 @@ public class OrderingValidator {
         }
     }
 
-    public void validateNumberOfFoodsInRange(Map<String, Integer> orders) {
+    public static void validateNumberOfFoodsInRange(Map<String, Integer> orders) {
         for (Integer numberOfFood : orders.values()) {
             checkMinimumOfTotalNumberOfFood(numberOfFood);
             checkMaximumOfTotalNumberOfFood(numberOfFood);
         }
     }
 
-    public void validateNotOnlyBeverage(Map<String, Integer> orders) {
+    public static void validateNotOnlyBeverage(Map<String, Integer> orders) {
         Map<String, Integer> beverageMenus = MenuList.getCategoryMenus(BEVERAGE);
 
         boolean isOnlyBeverage = orders.keySet().stream()
@@ -37,7 +37,7 @@ public class OrderingValidator {
         }
     }
 
-    public void validateTotalNumberOfFoodsInRange(Map<String, Integer> orders) {
+    public static void validateTotalNumberOfFoodsInRange(Map<String, Integer> orders) {
         int totalNumberOfFoods = orders.values()
                 .stream()
                 .mapToInt(Integer::intValue)

@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class eventCalculator {
     public static MenuList givenMenu(int totalOrderAmountBeforeDiscount) {
-        if (totalOrderAmountBeforeDiscount >= GIFT_EVENT_STANDARD.getMoney()) {
+        if (totalOrderAmountBeforeDiscount >= GIFT_EVENT_STANDARD.getDetails()) {
             return CHAMPAGNE;
         }
         return NONE_MENU;
@@ -29,7 +29,7 @@ public class eventCalculator {
         if (isBeforeChristmas(day)) {
             return christmasEventDiscount(day);
         }
-        return NONE_DISCOUNT.getMoney();
+        return NONE_DISCOUNT.getDetails();
     }
 
     public static int weekdayEvent(Map<String, Integer> orders, LocalDate date) {
@@ -42,7 +42,7 @@ public class eventCalculator {
                     .sum();
         }
         
-        return NONE_DISCOUNT.getMoney();
+        return NONE_DISCOUNT.getDetails();
     }
 
     private static boolean isWeekday(LocalDate date) {
@@ -61,7 +61,7 @@ public class eventCalculator {
                     .sum();
         }
         
-        return NONE_DISCOUNT.getMoney();
+        return NONE_DISCOUNT.getDetails();
     }
 
     private static boolean isWeekend(LocalDate date) {

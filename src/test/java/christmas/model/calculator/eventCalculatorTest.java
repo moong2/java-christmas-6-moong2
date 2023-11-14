@@ -101,7 +101,7 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.weekdayEvent(orders, date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
     }
 
     @ParameterizedTest
@@ -125,28 +125,28 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.weekendEvent(orders, date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
     }
 
     static Stream<Arguments> ordersAndWeekday() {
         return Stream.of(
                 Arguments.of(Map.of("양송이수프", 1, "초코케이크", 1), LocalDate.of(2023, 12, 4),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney()),
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails()),
                 Arguments.of(Map.of("초코케이크", 2, "아이스크림", 3), LocalDate.of(2023, 12, 25),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney() * 5),
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails() * 5),
                 Arguments.of(Map.of("티본스테이크", 1, "레드와인", 1), LocalDate.of(2023, 12, 31),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney() * 0)
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails() * 0)
         );
     }
 
     static Stream<Arguments> ordersAndWeekend() {
         return Stream.of(
                 Arguments.of(Map.of("양송이수프", 1, "티본스테이크", 1), LocalDate.of(2023, 12, 1),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney() * 1),
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails() * 1),
                 Arguments.of(Map.of("초코케이크", 2, "아이스크림", 3), LocalDate.of(2023, 12, 15),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney() * 0),
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails() * 0),
                 Arguments.of(Map.of("티본스테이크", 2, "크리스마스파스타", 3), LocalDate.of(2023, 12, 30),
-                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getMoney() * 5)
+                        WEEKEND_WEEKDAY_EVENT_DISCOUNT.getDetails() * 5)
         );
     }
 
@@ -159,7 +159,7 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.specialEvent(date);
 
         // then
-        assertThat(testDiscount).isEqualTo(SPECIAL_EVENT_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(SPECIAL_EVENT_DISCOUNT.getDetails());
     }
 
     static Stream<Arguments> specialDate() {
@@ -182,7 +182,7 @@ class eventCalculatorTest {
         int testDiscount = eventCalculator.specialEvent(date);
 
         // then
-        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getMoney());
+        assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
     }
 
     static Stream<Arguments> notSpecialDate() {

@@ -18,6 +18,10 @@ public enum BadgeCategory {
         this.maximumStandard = maximumStandard;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public static BadgeCategory getBadge(int totalBenefit) {
         return Arrays.stream(BadgeCategory.values())
                 .filter((badge) -> totalBenefit >= badge.minimumStandard && totalBenefit <= badge.maximumStandard)

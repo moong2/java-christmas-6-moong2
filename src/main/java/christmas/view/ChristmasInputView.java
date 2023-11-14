@@ -1,7 +1,7 @@
 package christmas.view;
 
-import static christmas.util.instructions.guidance.ORDER_MENU;
-import static christmas.util.instructions.guidance.VISIT_DATE;
+import static christmas.util.instructions.Guidance.ORDER_MENU;
+import static christmas.util.instructions.Guidance.VISIT_DATE;
 
 import camp.nextstep.edu.missionutils.Console;
 
