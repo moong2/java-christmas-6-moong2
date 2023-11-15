@@ -6,7 +6,8 @@ public enum Exceptions {
 
     AUTHENTICATION_INVALID("비정상적인 접근입니다."),
 
-    EVENT_FULL("이벤트 참여자가 많아 참여할 수 없습니다.");
+    EVENT_FULL("이벤트 참여자가 많아 참여할 수 없습니다."),
+    ADMIN_FULL("관리자에 등록할 수 없습니다. 관계자에게 문의하세요.");
 
     private final String message;
 

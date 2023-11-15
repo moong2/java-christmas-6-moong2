@@ -3,6 +3,7 @@ package christmas.controller;
 import static christmas.util.instructions.Guidance.WELCOME;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.model.domain.Admin;
 import christmas.model.domain.Client;
 import christmas.model.domain.VisitInformation;
 import christmas.model.util.event.BadgeCategory;
@@ -56,6 +57,10 @@ public class UserController {
 
     public Client saveVisitInformation(VisitInformation visitInformation) {
         return userService.saveUser(visitInformation);
+    }
+
+    public Admin addAdmin() {
+        return userService.createAdmin();
     }
 
     public void guideVisitInformation(VisitInformation visitInformation) {

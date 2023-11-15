@@ -8,9 +8,9 @@ import static christmas.model.util.event.EventCategory.WEEKEND_EVENT;
 import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
 import static christmas.model.util.menu.MenuList.CHAMPAGNE;
 
+import christmas.model.domain.Admin;
 import christmas.model.domain.Client;
 import christmas.model.domain.Users;
-import christmas.model.domain.VisitInformation;
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
 import christmas.model.util.menu.MenuList;
@@ -62,6 +62,18 @@ public class EventService {
 
     public BadgeCategory awardBadge(Client client) {
         return BadgeCategory.getBadge(this.calculateBenefitsAmount(client));
+    }
+
+    public int analyzeTotalParticipants(Admin admin) {
+        return admin.analyzeTotalParticipants(users.getClients());
+    }
+
+    public double analyzeNextEventParticipants(Admin admin) {
+        return admin.analyzeNextEventParticipants(users.getClients());
+    }
+
+    public long analyzeTotalEventOrders(Admin admin) {
+        return admin.analyzeTotalEventOrders(users.getClients());
     }
 
     private void addDiscountIfApplicable(Map<EventCategory, Integer> benefits, EventCategory category, int discount) {

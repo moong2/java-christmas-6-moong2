@@ -13,6 +13,7 @@ import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
 
 import christmas.model.converter.StringToInteger;
 import christmas.model.converter.StringToMap;
+import christmas.model.domain.Admin;
 import christmas.model.domain.Client;
 import christmas.model.domain.Orders;
 import christmas.model.domain.Users;
@@ -53,6 +54,13 @@ public class UserService {
         users.addUser(client);
 
         return client;
+    }
+
+    public Admin createAdmin() {
+        Admin admin = Admin.of();
+        users.addAdmin(admin);
+
+        return admin;
     }
 
     private int convertToInteger(String visitDate) {

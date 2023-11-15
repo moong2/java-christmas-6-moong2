@@ -1,17 +1,9 @@
 package christmas.model.domain;
 
-import static christmas.util.exceptions.Exceptions.EVENT_FULL;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Users {
     private static Users instance;
-    private final List<Client> clients;
-
-    private Users() {
-        this.clients = new ArrayList<>();
-    }
+    private final Clients clients = new Clients();
+    private final Admins admins = new Admins();
 
     public static synchronized Users getInstance() {
         if (instance == null) {
@@ -21,11 +13,20 @@ public class Users {
     }
 
     public Client addUser(Client client) {
-        if (clients.size() == Integer.MAX_VALUE) {
-            throw new IllegalStateException(EVENT_FULL.getMessage());
-        }
+        clients.checkCanParticipate();
+        clients.addClient(client);
 
-        clients.add(client);
         return client;
+    }
+
+    public Admin addAdmin(Admin admin) {
+        admins.checkCanManage();
+        admins.addAdmin(admin);
+
+        return admin;
+    }
+
+    public Clients getClients() {
+        return clients;
     }
 }
