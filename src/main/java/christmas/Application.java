@@ -11,7 +11,7 @@ public class Application {
         ChristmasEventController controller = new ChristmasEventController(setView());
 
         Client client = controller.addClient();
-        controller.christmasEvent(client);
+        controller.applyChristmasEvent(client);
         controller.eventClose();
     }
 

@@ -22,7 +22,7 @@ public class ChristmasEventController {
         return userController.saveVisitInformation(visitInformation);
     }
 
-    public void christmasEvent(Client client) {
+    public void applyChristmasEvent(Client client) {
         userController.sendWelcome();
         userController.guideVisitInformation(client.getVisitInformation());
         int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(client);
