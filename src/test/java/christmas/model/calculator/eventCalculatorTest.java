@@ -27,7 +27,7 @@ class eventCalculatorTest {
         MenuList given = CHAMPAGNE;
 
         // when & then
-        assertThat(eventCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(given);
+        assertThat(EventCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(given);
     }
 
     @ParameterizedTest
@@ -38,7 +38,7 @@ class eventCalculatorTest {
         MenuList notGiven = NONE_MENU;
 
         // when & then
-        assertThat(eventCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(notGiven);
+        assertThat(EventCalculator.givenMenu(totalOrderAmountBeforeDiscount)).isEqualTo(notGiven);
     }
 
     @ParameterizedTest
@@ -47,7 +47,7 @@ class eventCalculatorTest {
     void christmasDDayDiscountApply(LocalDate date, int expectedDiscount) {
         // given
         // when
-        int testDiscount = eventCalculator.christmasDDayEvent(date);
+        int testDiscount = EventCalculator.christmasDDayEvent(date);
 
         // then
         assertThat(testDiscount).isEqualTo(expectedDiscount);
@@ -67,7 +67,7 @@ class eventCalculatorTest {
     void christmasDDayDiscountNotApply(LocalDate date) {
         // given
         // when
-        int testDiscount = eventCalculator.christmasDDayEvent(date);
+        int testDiscount = EventCalculator.christmasDDayEvent(date);
 
         // then
         assertThat(testDiscount).isEqualTo(0);
@@ -86,7 +86,7 @@ class eventCalculatorTest {
     void weekdayDiscountApply(Map<String, Integer> orders, LocalDate date, int expectedDiscount) {
         // given
         // when
-        int testDiscount = eventCalculator.weekdayEvent(orders, date);
+        int testDiscount = EventCalculator.weekdayEvent(orders, date);
 
         // then
         assertThat(testDiscount).isEqualTo(expectedDiscount);
@@ -98,7 +98,7 @@ class eventCalculatorTest {
     void weekdayDiscountNotApply(Map<String, Integer> orders, LocalDate date) {
         // given
         // when
-        int testDiscount = eventCalculator.weekdayEvent(orders, date);
+        int testDiscount = EventCalculator.weekdayEvent(orders, date);
 
         // then
         assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
@@ -110,7 +110,7 @@ class eventCalculatorTest {
     void weekendDiscountApply(Map<String, Integer> orders, LocalDate date, int expectedDiscount) {
         // given
         // when
-        int testDiscount = eventCalculator.weekendEvent(orders, date);
+        int testDiscount = EventCalculator.weekendEvent(orders, date);
 
         // then
         assertThat(testDiscount).isEqualTo(expectedDiscount);
@@ -122,7 +122,7 @@ class eventCalculatorTest {
     void weekendDiscountNotApply(Map<String, Integer> orders, LocalDate date) {
         // given
         // when
-        int testDiscount = eventCalculator.weekendEvent(orders, date);
+        int testDiscount = EventCalculator.weekendEvent(orders, date);
 
         // then
         assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
@@ -156,7 +156,7 @@ class eventCalculatorTest {
     void specialDiscountApply(LocalDate date) {
         // given
         // when
-        int testDiscount = eventCalculator.specialEvent(date);
+        int testDiscount = EventCalculator.specialEvent(date);
 
         // then
         assertThat(testDiscount).isEqualTo(SPECIAL_EVENT_DISCOUNT.getDetails());
@@ -179,7 +179,7 @@ class eventCalculatorTest {
     void specialDiscountNotApply(LocalDate date) {
         // given
         // when
-        int testDiscount = eventCalculator.specialEvent(date);
+        int testDiscount = EventCalculator.specialEvent(date);
 
         // then
         assertThat(testDiscount).isEqualTo(NONE_DISCOUNT.getDetails());
