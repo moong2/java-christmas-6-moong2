@@ -17,7 +17,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class eventCalculatorTest {
+class EventCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(ints = {120000, 120001, 2147483647})

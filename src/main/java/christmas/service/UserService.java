@@ -13,11 +13,10 @@ import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
 
 import christmas.model.converter.StringToInteger;
 import christmas.model.converter.StringToMap;
-import christmas.model.domain.Orders;
 import christmas.model.domain.Client;
+import christmas.model.domain.Orders;
 import christmas.model.domain.Users;
 import christmas.model.domain.VisitInformation;
-import christmas.model.dto.ClientDto;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -49,11 +48,11 @@ public class UserService {
         );
     }
 
-    public ClientDto saveUser(VisitInformation visitInformation) {
+    public Client saveUser(VisitInformation visitInformation) {
         Client client = Client.of(visitInformation);
         users.addUser(client);
 
-        return ClientDto.from(client);
+        return client;
     }
 
     private int convertToInteger(String visitDate) {

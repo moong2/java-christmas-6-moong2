@@ -2,8 +2,8 @@ package christmas.controller;
 
 import static christmas.model.util.event.EventDetails.EVENT_STANDARD;
 
+import christmas.model.domain.Client;
 import christmas.model.domain.VisitInformation;
-import christmas.model.dto.ClientDto;
 import christmas.strategy.BenefitsAvailableStrategy;
 import christmas.strategy.BenefitsUnavailableStrategy;
 import christmas.strategy.EventHandlingStrategy;
@@ -17,19 +17,19 @@ public class ChristmasEventController {
         this.eventController = new EventController();
     }
 
-    public ClientDto addClient() {
+    public Client addClient() {
         VisitInformation visitInformation = userController.getVisitInformation();
         return userController.saveVisitInformation(visitInformation);
     }
 
-    public void christmasEvent(ClientDto clientDto) {
+    public void christmasEvent(Client client) {
         userController.sendWelcome();
-        userController.guideVisitInformation(clientDto.visitInformation());
-        int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(clientDto.visitInformation());
+        userController.guideVisitInformation(client.getVisitInformation());
+        int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(client);
         userController.guideTotalAmountBeforeDiscount(getTotalAmountBeforeDiscount);
 
         EventHandlingStrategy eventHandlingStrategy = applyStrategy(getTotalAmountBeforeDiscount);
-        eventHandlingStrategy.handleEvent(clientDto.visitInformation(), userController, eventController);
+        eventHandlingStrategy.handleEvent(client, userController, eventController);
     }
 
     public void eventClose() {

@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.domain.Client;
 import christmas.model.domain.VisitInformation;
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
@@ -10,27 +11,27 @@ import java.util.Map;
 public class EventController {
     private final EventService eventService = new EventService();
 
-    public int getTotalAmountBeforeDiscount(VisitInformation visitInformation) {
-        return eventService.calculateTotalAmountBeforeDiscount(visitInformation);
+    public int getTotalAmountBeforeDiscount(Client client) {
+        return eventService.calculateTotalAmountBeforeDiscount(client);
     }
 
-    public MenuList givenMenu(VisitInformation visitInformation) {
-        return eventService.givenEvent(visitInformation);
+    public MenuList givenMenu(Client client) {
+        return eventService.givenEvent(client);
     }
 
-    public Map<EventCategory, Integer> benefitsDetails(VisitInformation visitInformation) {
-        return eventService.events(visitInformation);
+    public Map<EventCategory, Integer> benefitsDetails(Client client) {
+        return eventService.events(client);
     }
 
-    public int benefitsAmount(VisitInformation visitInformation) {
-        return eventService.calculateBenefitsAmount(visitInformation);
+    public int benefitsAmount(Client client) {
+        return eventService.calculateBenefitsAmount(client);
     }
 
-    public int getTotalAmountAfterDiscount(VisitInformation visitInformation) {
-        return eventService.calculateTotalAmountAfterDiscount(visitInformation);
+    public int getTotalAmountAfterDiscount(Client client) {
+        return eventService.calculateTotalAmountAfterDiscount(client);
     }
 
-    public BadgeCategory getBadge(VisitInformation visitInformation) {
-        return eventService.awardBadge(visitInformation);
+    public BadgeCategory getBadge(Client client) {
+        return eventService.awardBadge(client);
     }
 }

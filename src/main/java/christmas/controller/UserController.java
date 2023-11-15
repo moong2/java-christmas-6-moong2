@@ -3,8 +3,8 @@ package christmas.controller;
 import static christmas.util.instructions.Guidance.WELCOME;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.model.domain.Client;
 import christmas.model.domain.VisitInformation;
-import christmas.model.dto.ClientDto;
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
 import christmas.model.util.menu.MenuList;
@@ -54,7 +54,7 @@ public class UserController {
         }
     }
 
-    public ClientDto saveVisitInformation(VisitInformation visitInformation) {
+    public Client saveVisitInformation(VisitInformation visitInformation) {
         return userService.saveUser(visitInformation);
     }
 

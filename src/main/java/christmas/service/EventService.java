@@ -8,6 +8,7 @@ import static christmas.model.util.event.EventCategory.WEEKEND_EVENT;
 import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
 import static christmas.model.util.menu.MenuList.CHAMPAGNE;
 
+import christmas.model.domain.Client;
 import christmas.model.domain.Users;
 import christmas.model.domain.VisitInformation;
 import christmas.model.util.event.BadgeCategory;
@@ -19,39 +20,39 @@ import java.util.Map;
 public class EventService {
     private final Users users = Users.getInstance();
 
-    public int calculateTotalAmountBeforeDiscount(VisitInformation visitInformation) {
-        return visitInformation.getTotalAmountBeforeDiscount();
+    public int calculateTotalAmountBeforeDiscount(Client client) {
+        return client.getTotalAmountBeforeDiscount();
     }
 
-    public MenuList givenEvent(VisitInformation visitInformation) {
-        return visitInformation.getGivenMenu();
+    public MenuList givenEvent(Client client) {
+        return client.getGivenMenu();
     }
 
-    public Map<EventCategory, Integer> events(VisitInformation visitInformation) {
+    public Map<EventCategory, Integer> events(Client client) {
         Map<EventCategory, Integer> totalBenefits = new HashMap<>();
 
-        addDiscountIfApplicable(totalBenefits, CHRISTMAS_DDAY_EVENT, visitInformation.getChristmasDDayDiscount());
-        addDiscountIfApplicable(totalBenefits, WEEKDAY_EVENT, visitInformation.getWeekdayDiscount());
-        addDiscountIfApplicable(totalBenefits, WEEKEND_EVENT, visitInformation.getWeekendDiscount());
-        addDiscountIfApplicable(totalBenefits, SPECIAL_EVENT, visitInformation.getSpecialDiscount());
-        addDiscountIfApplicable(totalBenefits, GIVE_EVENT, visitInformation.getGivenMenu().getPrice());
+        addDiscountIfApplicable(totalBenefits, CHRISTMAS_DDAY_EVENT, client.getChristmasDDayDiscount());
+        addDiscountIfApplicable(totalBenefits, WEEKDAY_EVENT, client.getWeekdayDiscount());
+        addDiscountIfApplicable(totalBenefits, WEEKEND_EVENT, client.getWeekendDiscount());
+        addDiscountIfApplicable(totalBenefits, SPECIAL_EVENT, client.getSpecialDiscount());
+        addDiscountIfApplicable(totalBenefits, GIVE_EVENT, client.getGivenMenu().getPrice());
 
         return totalBenefits;
     }
 
-    public int calculateBenefitsAmount(VisitInformation visitInformation) {
-        return this.events(visitInformation)
+    public int calculateBenefitsAmount(Client client) {
+        return this.events(client)
                 .entrySet()
                 .stream()
                 .mapToInt((benefit) -> benefit.getValue())
                 .sum();
     }
 
-    public int calculateTotalAmountAfterDiscount(VisitInformation visitInformation) {
-        int totalAmountBeforeDiscount = this.calculateTotalAmountBeforeDiscount(visitInformation);
+    public int calculateTotalAmountAfterDiscount(Client client) {
+        int totalAmountBeforeDiscount = this.calculateTotalAmountBeforeDiscount(client);
 
-        int discountAmount = this.calculateBenefitsAmount(visitInformation);
-        MenuList givenMenu = this.givenEvent(visitInformation);
+        int discountAmount = this.calculateBenefitsAmount(client);
+        MenuList givenMenu = this.givenEvent(client);
         if (givenMenu.equals(CHAMPAGNE)) {
             discountAmount += CHAMPAGNE.getPrice();
         }
@@ -59,8 +60,8 @@ public class EventService {
         return totalAmountBeforeDiscount - discountAmount;
     }
 
-    public BadgeCategory awardBadge(VisitInformation visitInformation) {
-        return BadgeCategory.getBadge(this.calculateBenefitsAmount(visitInformation));
+    public BadgeCategory awardBadge(Client client) {
+        return BadgeCategory.getBadge(this.calculateBenefitsAmount(client));
     }
 
     private void addDiscountIfApplicable(Map<EventCategory, Integer> benefits, EventCategory category, int discount) {

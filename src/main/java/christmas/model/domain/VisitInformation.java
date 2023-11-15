@@ -1,10 +1,10 @@
 package christmas.model.domain;
 
-import static christmas.model.calculator.eventCalculator.christmasDDayEvent;
-import static christmas.model.calculator.eventCalculator.givenMenu;
-import static christmas.model.calculator.eventCalculator.specialEvent;
-import static christmas.model.calculator.eventCalculator.weekdayEvent;
-import static christmas.model.calculator.eventCalculator.weekendEvent;
+import static christmas.model.calculator.EventCalculator.christmasDDayEvent;
+import static christmas.model.calculator.EventCalculator.givenMenu;
+import static christmas.model.calculator.EventCalculator.specialEvent;
+import static christmas.model.calculator.EventCalculator.weekdayEvent;
+import static christmas.model.calculator.EventCalculator.weekendEvent;
 
 import christmas.model.util.menu.MenuList;
 import java.time.LocalDate;

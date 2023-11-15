@@ -15,7 +15,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
 
-public class eventCalculator {
+public class EventCalculator {
     public static MenuList givenMenu(int totalOrderAmountBeforeDiscount) {
         if (totalOrderAmountBeforeDiscount >= GIFT_EVENT_STANDARD.getDetails()) {
             return CHAMPAGNE;
