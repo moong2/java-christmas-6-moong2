@@ -7,19 +7,18 @@ import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_BENEFITS;
 import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_BENEFITS_AMOUNT;
 
 import christmas.controller.EventController;
-import christmas.controller.UserController;
+import christmas.controller.ViewController;
 import christmas.model.domain.Client;
-import christmas.model.domain.VisitInformation;
 
 public class BenefitsUnavailableStrategy implements EventHandlingStrategy {
     @Override
-    public void handleEvent(Client client, UserController userController,
+    public void handleEvent(Client client, ViewController viewController,
                             EventController eventController) {
-        userController.guideEventNotApply(PREVIEW_GIVE_MENU.getGuidance());
-        userController.guideEventNotApply(PREVIEW_TOTAL_BENEFITS.getGuidance());
-        userController.guideEventNotApply(PREVIEW_TOTAL_BENEFITS_AMOUNT.getGuidance());
-        userController.guideTotalAmountAfterDiscount(
+        viewController.guideEventNotApply(PREVIEW_GIVE_MENU.getGuidance());
+        viewController.guideEventNotApply(PREVIEW_TOTAL_BENEFITS.getGuidance());
+        viewController.guideEventNotApply(PREVIEW_TOTAL_BENEFITS_AMOUNT.getGuidance());
+        viewController.guideTotalAmountAfterDiscount(
                 eventController.getTotalAmountAfterDiscount(client));
-        userController.guideEventNotApply(String.format(PREVIEW_EVENT_BADGE.getGuidance(), EVENT_MONTH.getDate()));
+        viewController.guideEventNotApply(String.format(PREVIEW_EVENT_BADGE.getGuidance(), EVENT_MONTH.getDate()));
     }
 }

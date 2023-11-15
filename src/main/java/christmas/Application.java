@@ -1,7 +1,7 @@
 package christmas;
 
 import christmas.controller.ChristmasEventController;
-import christmas.controller.UserController;
+import christmas.controller.ViewController;
 import christmas.model.domain.Admin;
 import christmas.model.domain.Client;
 import christmas.view.ChristmasInputView;
@@ -20,7 +20,7 @@ public class Application {
         controller.eventClose();
     }
 
-    private static UserController setView() {
-        return new UserController(new ChristmasInputView(), new ChristmasOutputView());
+    private static ViewController setView() {
+        return new ViewController(new ChristmasInputView(), new ChristmasOutputView());
     }
 }

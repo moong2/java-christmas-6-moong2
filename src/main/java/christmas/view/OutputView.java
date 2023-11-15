@@ -28,5 +28,14 @@ public interface OutputView {
 
     void printEventNotApply(String guidance);
 
+    void printReport(String message);
+
+    void printNumberOfClients(int totalNumberOfClients);
+
+    void printNumberOfNextClients(double totalNumberOfNextClients);
+
+    void printTotalAmountOfOrders(long totalAmountOfOrders);
+
     void printException(String message);
+
 }

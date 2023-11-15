@@ -4,23 +4,23 @@ import static christmas.model.util.event.EventDetails.EVENT_STANDARD;
 
 import christmas.model.domain.Admin;
 import christmas.model.domain.Client;
-import christmas.model.domain.VisitInformation;
+import christmas.model.dto.VisitInformationDto;
 import christmas.strategy.BenefitsAvailableStrategy;
 import christmas.strategy.BenefitsUnavailableStrategy;
 import christmas.strategy.EventHandlingStrategy;
 
 public class ChristmasEventController {
-    private final UserController userController;
-    private final EventController eventController;
+    private final UserController userController = new UserController();
+    private final EventController eventController = new EventController();
+    private final ViewController viewController;
 
-    public ChristmasEventController(UserController userController) {
-        this.userController = userController;
-        this.eventController = new EventController();
+    public ChristmasEventController(ViewController viewController) {
+        this.viewController = viewController;
     }
 
     public Client addClient() {
-        VisitInformation visitInformation = userController.getVisitInformation();
-        return userController.saveVisitInformation(visitInformation);
+        VisitInformationDto visitInformationDto = viewController.getVisitInformation();
+        return userController.addClient(visitInformationDto);
     }
 
     public Admin addAdmin() {
@@ -28,27 +28,23 @@ public class ChristmasEventController {
     }
 
     public void applyChristmasEvent(Client client) {
-        userController.sendWelcome();
-        userController.guideVisitInformation(client.getVisitInformation());
+        viewController.sendWelcome();
+        viewController.guideVisitInformation(client.getVisitInformation());
         int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(client);
-        userController.guideTotalAmountBeforeDiscount(getTotalAmountBeforeDiscount);
+        viewController.guideTotalAmountBeforeDiscount(getTotalAmountBeforeDiscount);
 
         EventHandlingStrategy eventHandlingStrategy = applyStrategy(getTotalAmountBeforeDiscount);
-        eventHandlingStrategy.handleEvent(client, userController, eventController);
+        eventHandlingStrategy.handleEvent(client, viewController, eventController);
     }
 
     public void analyzeEvent(Admin admin) {
-        int i = eventController.analyzeTotalParticipants(admin);
-        double v = eventController.analyzeNextEventParticipants(admin);
-        Long aLong = eventController.analyzeTotalEventOrders(admin);
-
-        System.out.println("i = " + i);
-        System.out.println("v = " + v);
-        System.out.println("aLong = " + aLong);
+        viewController.reportTotalNumberOfClients(eventController.analyzeTotalParticipants(admin));
+        viewController.reportTotalNumberOfNextEventClients(eventController.analyzeNextEventParticipants(admin));
+        viewController.reportTotalAmountOfOrders(eventController.analyzeTotalEventOrders(admin));
     }
 
     public void eventClose() {
-        userController.closeProcess();
+        viewController.closeProcess();
     }
 
     private EventHandlingStrategy applyStrategy(int getTotalAmountBeforeDiscount) {

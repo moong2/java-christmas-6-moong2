@@ -16,6 +16,11 @@ import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_AMOUNT_AFTER_DI
 import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_AMOUNT_BEFORE_DISCOUNT;
 import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_BENEFITS;
 import static christmas.util.instructions.Guidance.PREVIEW_TOTAL_BENEFITS_AMOUNT;
+import static christmas.util.instructions.Report.HEADER_NUMBER_OF_CLIENTS;
+import static christmas.util.instructions.Report.HEADER_NUMBER_OF_NEXT_EVENT_CLIENTS;
+import static christmas.util.instructions.Report.HEADER_TOTAL_AMOUNT_OF_ORDERS;
+import static christmas.util.instructions.Report.STATISTIC_NUMBER_OF_CLIENTS;
+import static christmas.util.instructions.Report.STATISTIC_TOTAL_AMOUNT_OF_ORDERS;
 
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
@@ -106,6 +111,29 @@ public class ChristmasOutputView implements OutputView {
     }
 
     @Override
+    public void printReport(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void printNumberOfClients(int totalNumberOfClients) {
+        this.printReport(HEADER_NUMBER_OF_CLIENTS.getReport());
+        System.out.println(String.format(STATISTIC_NUMBER_OF_CLIENTS.getReport(), totalNumberOfClients));
+    }
+
+    @Override
+    public void printNumberOfNextClients(double totalNumberOfNextClients) {
+        this.printReport(HEADER_NUMBER_OF_NEXT_EVENT_CLIENTS.getReport());
+        System.out.println(String.format(STATISTIC_NUMBER_OF_CLIENTS.getReport(), totalNumberOfNextClients));
+    }
+
+    @Override
+    public void printTotalAmountOfOrders(long totalAmountOfOrders) {
+        this.printReport(HEADER_TOTAL_AMOUNT_OF_ORDERS.getReport());
+        System.out.println(String.format(STATISTIC_TOTAL_AMOUNT_OF_ORDERS.getReport(), formatCurrency(totalAmountOfOrders)));
+    }
+
+    @Override
     public void printException(String message) {
         System.out.println(message);
     }
@@ -113,6 +141,12 @@ public class ChristmasOutputView implements OutputView {
     private String formatCurrency(int amount) {
         NumberFormat currencyFormat = NumberFormat.getNumberInstance();
         currencyFormat.setGroupingUsed(true); // This is usually the default, but set explicitly for clarity
+        return currencyFormat.format(amount);
+    }
+
+    private String formatCurrency(long amount) {
+        NumberFormat currencyFormat = NumberFormat.getNumberInstance();
+        currencyFormat.setGroupingUsed(true);
         return currencyFormat.format(amount);
     }
 }
