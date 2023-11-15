@@ -1,10 +1,10 @@
 package christmas.strategy;
 
 import christmas.controller.EventController;
-import christmas.controller.VisitInformationController;
+import christmas.controller.UserController;
 import christmas.model.domain.VisitInformation;
 
 public interface EventHandlingStrategy {
-    void handleEvent(VisitInformation visitInformation, VisitInformationController visitInformationController,
+    void handleEvent(VisitInformation visitInformation, UserController userController,
                      EventController eventController);
 }

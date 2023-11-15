@@ -1,6 +1,5 @@
 package christmas.service;
 
-import static christmas.model.domain.User.userOf;
 import static christmas.model.util.event.EventPeriod.EVENT_MONTH;
 import static christmas.model.util.event.EventPeriod.EVENT_YEAR;
 import static christmas.model.validator.DateOfVisitValidator.validateNumeric;
@@ -15,14 +14,15 @@ import static christmas.util.exceptions.Exceptions.ORDERING_INVALID;
 import christmas.model.converter.StringToInteger;
 import christmas.model.converter.StringToMap;
 import christmas.model.domain.Orders;
-import christmas.model.domain.User;
-import christmas.model.domain.Users;
+import christmas.model.domain.Client;
+import christmas.model.domain.Clients;
 import christmas.model.domain.VisitInformation;
+import christmas.model.dto.ClientDto;
 import java.time.LocalDate;
 import java.util.Map;
 
-public class VisitInformationService {
-    private final Users users = Users.getInstance();
+public class UserService {
+    private final Clients clients = Clients.getInstance();
 
     public int validateAndConvertVisitDate(String visitDate) {
         validateNumeric(visitDate);
@@ -49,9 +49,11 @@ public class VisitInformationService {
         );
     }
 
-    public void saveUser(VisitInformation visitInformation) {
-        User user = userOf(visitInformation);
-        users.addUser(user);
+    public ClientDto saveUser(VisitInformation visitInformation) {
+        Client client = Client.of(visitInformation);
+        clients.addUser(client);
+
+        return ClientDto.from(client);
     }
 
     private int convertToInteger(String visitDate) {

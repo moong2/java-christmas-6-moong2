@@ -4,20 +4,21 @@ import static christmas.util.instructions.Guidance.WELCOME;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.model.domain.VisitInformation;
+import christmas.model.dto.ClientDto;
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
 import christmas.model.util.menu.MenuList;
-import christmas.service.VisitInformationService;
+import christmas.service.UserService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.Map;
 
-public class VisitInformationController {
+public class UserController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final VisitInformationService visitInformationService = new VisitInformationService();
+    private final UserService userService = new UserService();
 
-    public VisitInformationController(InputView inputView, OutputView outputView) {
+    public UserController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -30,13 +31,13 @@ public class VisitInformationController {
     public VisitInformation getVisitInformation() {
         int visitDate = getValidVisitDate();
         Map<String, Integer> orders = getValidOrders();
-        return visitInformationService.createVisitInformation(visitDate, orders);
+        return userService.createVisitInformation(visitDate, orders);
     }
 
     private int getValidVisitDate() {
         while (true) {
             try {
-                return visitInformationService.validateAndConvertVisitDate(inputView.getVisitDate());
+                return userService.validateAndConvertVisitDate(inputView.getVisitDate());
             } catch (IllegalArgumentException e) {
                 outputView.printException(e.getMessage());
             }
@@ -46,15 +47,15 @@ public class VisitInformationController {
     private Map<String, Integer> getValidOrders() {
         while (true) {
             try {
-                return visitInformationService.validateAndConvertOrders(inputView.getOrders());
+                return userService.validateAndConvertOrders(inputView.getOrders());
             } catch (IllegalArgumentException e) {
                 outputView.printException(e.getMessage());
             }
         }
     }
 
-    public void saveVisitInformation(VisitInformation visitInformation) {
-        visitInformationService.saveUser(visitInformation);
+    public ClientDto saveVisitInformation(VisitInformation visitInformation) {
+        return userService.saveUser(visitInformation);
     }
 
     public void guideVisitInformation(VisitInformation visitInformation) {

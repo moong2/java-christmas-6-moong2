@@ -3,37 +3,37 @@ package christmas.controller;
 import static christmas.model.util.event.EventDetails.EVENT_STANDARD;
 
 import christmas.model.domain.VisitInformation;
+import christmas.model.dto.ClientDto;
 import christmas.strategy.BenefitsAvailableStrategy;
 import christmas.strategy.BenefitsUnavailableStrategy;
 import christmas.strategy.EventHandlingStrategy;
 
 public class ChristmasEventController {
-    private final VisitInformationController visitInformationController;
+    private final UserController userController;
     private final EventController eventController;
 
-    public ChristmasEventController(VisitInformationController visitInformationController) {
-        this.visitInformationController = visitInformationController;
+    public ChristmasEventController(UserController userController) {
+        this.userController = userController;
         this.eventController = new EventController();
     }
 
-    public void welcome() {
-        visitInformationController.sendWelcome();
+    public ClientDto addClient() {
+        VisitInformation visitInformation = userController.getVisitInformation();
+        return userController.saveVisitInformation(visitInformation);
     }
 
-    public void christmasEvent() {
-        VisitInformation visitInformation = visitInformationController.getVisitInformation();
-        visitInformationController.saveVisitInformation(visitInformation);
-
-        visitInformationController.guideVisitInformation(visitInformation);
-        int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(visitInformation);
-        visitInformationController.guideTotalAmountBeforeDiscount(getTotalAmountBeforeDiscount);
+    public void christmasEvent(ClientDto clientDto) {
+        userController.sendWelcome();
+        userController.guideVisitInformation(clientDto.visitInformation());
+        int getTotalAmountBeforeDiscount = eventController.getTotalAmountBeforeDiscount(clientDto.visitInformation());
+        userController.guideTotalAmountBeforeDiscount(getTotalAmountBeforeDiscount);
 
         EventHandlingStrategy eventHandlingStrategy = applyStrategy(getTotalAmountBeforeDiscount);
-        eventHandlingStrategy.handleEvent(visitInformation, visitInformationController, eventController);
+        eventHandlingStrategy.handleEvent(clientDto.visitInformation(), userController, eventController);
     }
 
     public void eventClose() {
-        visitInformationController.closeProcess();
+        userController.closeProcess();
     }
 
     private EventHandlingStrategy applyStrategy(int getTotalAmountBeforeDiscount) {
