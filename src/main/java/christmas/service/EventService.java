@@ -8,7 +8,7 @@ import static christmas.model.util.event.EventCategory.WEEKEND_EVENT;
 import static christmas.model.util.event.EventDetails.NONE_DISCOUNT;
 import static christmas.model.util.menu.MenuList.CHAMPAGNE;
 
-import christmas.model.domain.Clients;
+import christmas.model.domain.Users;
 import christmas.model.domain.VisitInformation;
 import christmas.model.util.event.BadgeCategory;
 import christmas.model.util.event.EventCategory;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EventService {
-    private final Clients clients = Clients.getInstance();
+    private final Users users = Users.getInstance();
 
     public int calculateTotalAmountBeforeDiscount(VisitInformation visitInformation) {
         return visitInformation.getTotalAmountBeforeDiscount();

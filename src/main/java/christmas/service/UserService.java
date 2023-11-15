@@ -15,14 +15,14 @@ import christmas.model.converter.StringToInteger;
 import christmas.model.converter.StringToMap;
 import christmas.model.domain.Orders;
 import christmas.model.domain.Client;
-import christmas.model.domain.Clients;
+import christmas.model.domain.Users;
 import christmas.model.domain.VisitInformation;
 import christmas.model.dto.ClientDto;
 import java.time.LocalDate;
 import java.util.Map;
 
 public class UserService {
-    private final Clients clients = Clients.getInstance();
+    private final Users users = Users.getInstance();
 
     public int validateAndConvertVisitDate(String visitDate) {
         validateNumeric(visitDate);
@@ -51,7 +51,7 @@ public class UserService {
 
     public ClientDto saveUser(VisitInformation visitInformation) {
         Client client = Client.of(visitInformation);
-        clients.addUser(client);
+        users.addUser(client);
 
         return ClientDto.from(client);
     }

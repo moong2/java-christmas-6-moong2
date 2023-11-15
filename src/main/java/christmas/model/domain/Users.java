@@ -3,17 +3,17 @@ package christmas.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clients {
-    private static Clients instance;
+public class Users {
+    private static Users instance;
     private final List<Client> clients;
 
-    private Clients() {
+    private Users() {
         this.clients = new ArrayList<>();
     }
 
-    public static synchronized Clients getInstance() {
+    public static synchronized Users getInstance() {
         if (instance == null) {
-            instance = new Clients();
+            instance = new Users();
         }
         return instance;
     }
