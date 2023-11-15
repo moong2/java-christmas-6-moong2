@@ -1,5 +1,7 @@
 package christmas.model.domain;
 
+import static christmas.util.exceptions.Exceptions.EVENT_FULL;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +21,11 @@ public class Users {
     }
 
     public Client addUser(Client client) {
-        clients.add(client);
+        if (clients.size() == Integer.MAX_VALUE) {
+            throw new IllegalStateException(EVENT_FULL.getMessage());
+        }
 
+        clients.add(client);
         return client;
     }
 }
