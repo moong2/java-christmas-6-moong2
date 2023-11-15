@@ -99,10 +99,10 @@ class statisticCalculatorTest {
 
         LocalDate visitDate = LocalDate.of(EVENT_YEAR.getDate(), EVENT_MONTH.getDate(), 25);
 
-        Client client1 = Client.of(new VisitInformation(visitDate, new Orders(Map.of("양송이수프", 1, "제로콜라", 1))));
-        Client client2 = Client.of(new VisitInformation(visitDate, new Orders(Map.of("티본스테이크", 3, "아이스크림", 1))));
-        Client client3 = Client.of(new VisitInformation(visitDate,
-                new Orders(Map.of("타파스", 3, "해산물파스타", 5, "초코케이크", 2, "레드와인", 10))));
+        Client client1 = Client.of(VisitInformation.of(visitDate, Orders.of(Map.of("양송이수프", 1, "제로콜라", 1))));
+        Client client2 = Client.of(VisitInformation.of(visitDate, Orders.of(Map.of("티본스테이크", 3, "아이스크림", 1))));
+        Client client3 = Client.of(VisitInformation.of(visitDate,
+                Orders.of(Map.of("타파스", 3, "해산물파스타", 5, "초코케이크", 2, "레드와인", 10))));
 
         return List.of(client1, client2, client3);
     }
@@ -110,7 +110,7 @@ class statisticCalculatorTest {
     static List<Client> fifty_clients() {
         LocalDate visitDate = LocalDate.of(EVENT_YEAR.getDate(), EVENT_MONTH.getDate(), 25);
 
-        Client client = Client.of(new VisitInformation(visitDate, new Orders(Map.of("양송이수프", 1, "제로콜라", 1))));
+        Client client = Client.of(VisitInformation.of(visitDate, Orders.of(Map.of("양송이수프", 1, "제로콜라", 1))));
 
         List<Client> clients = new ArrayList<>();
         for (int num = 0; num < 50; num++) {

@@ -1,5 +1,8 @@
 package christmas.util.instructions;
 
+/**
+ * 12월 크리스마스 이벤트의 안내문구를 정의하는 enum이다.
+ */
 public enum Guidance {
     WELCOME("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
 
@@ -31,10 +34,20 @@ public enum Guidance {
 
     private final String guidance;
 
+    /**
+     * Guidance의 생성자다.
+     *
+     * @param guidance 안내문구
+     */
     Guidance(String guidance) {
         this.guidance = guidance;
     }
 
+    /**
+     * 안내문구를 반환한다.
+     *
+     * @return String 형식의 안내문구
+    */
     public String getGuidance() {
         return guidance;
     }

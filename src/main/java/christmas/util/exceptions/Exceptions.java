@@ -1,5 +1,8 @@
 package christmas.util.exceptions;
 
+/**
+ * 예외 출력문을 나타내는 enum이다.
+ */
 public enum Exceptions {
     DATE_OF_VISIT_INVALID("유효하지 않은 날짜입니다. 다시 입력해 주세요."),
     ORDERING_INVALID("유효하지 않은 주문입니다. 다시 입력해 주세요."),
@@ -11,10 +14,21 @@ public enum Exceptions {
 
     private final String message;
 
+    /**
+     * Exceptions 생성자다.
+     *
+     * @param message 예외 메시지
+     */
     Exceptions(String message) {
         this.message = message;
     }
 
+    /**
+     * 예외메시지를 반환한다.
+     * 접미사인 '[ERROR] '를 포함하여 반환한다.
+     *
+     * @return 에러 메시지 형식을 맞춘 에러 메시지
+     */
     public String getMessage() {
         StringBuilder message = new StringBuilder();
         String prefix = "[ERROR] ";
